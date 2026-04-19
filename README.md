@@ -2,14 +2,14 @@
 
 Qurio is a modular, reasoning-capable agent powered by local LLMs (via Ollama). It implements the **ReAct (Reason + Act)** pattern to solve tasks by thinking, selecting tools, and processing observations.
 
-## 🚀 Key Features
+## Key Features
 - **Local-First**: Runs entirely on your machine using Ollama (default: `qwen3.5:0.8b`).
 - **Structured Reasoning**: Uses explicit "Thought" and "Tool Call" phases for reliable behavior.
-- **Robust Schema Validation**: Powered by Pydantic to ensure the LLM follows strict JSON structures.
-- **Extensible Tool Registry**: Easily add new capabilities in `src/tools/`.
-- **Professional Logging**: Automatic console and file logging (stored in `/logs`).
+- **Schema Validation**: Powered by Pydantic to ensure the LLM follows strict JSON structures.
+- **Tool Registry**: Easily add new capabilities in `src/tools/`.
 
-## 📂 Repository Structure
+
+## Repository Structure
 ```text
 Qurio/
 ├── logs/             # Application logs (app.log)
@@ -51,7 +51,7 @@ The agent followed a 3-step cycle for every task:
 2. **Act**: If a tool is needed, it generates the specific arguments and executes it via the registry.
 3. **Observe**: The output of the tool is fed back into its memory (history) for the next reasoning step.
 
-## 🛡 Error Handling
-Qurio uses a custom exception system (`QurioError`):
+## Error Handling
+Qurio uses a custom exception system:
 - **EngineError**: Raised if Ollama fails or returns invalid JSON.
 - **ToolError**: Raised if a tool fails or is misused, allowing the agent to self-correct.
